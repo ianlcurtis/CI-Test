@@ -10,7 +10,7 @@ namespace CI_Test_Library
     {
         public static string GetText()
         {
-            return "Hello World!!!!";
+            return "Hello World!";
         }
     }
 }
