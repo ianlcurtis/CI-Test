@@ -9,8 +9,10 @@ xcopy /y "%WORKSPACE%\CI-Test-Library\bin\Release\CI-Test-Library.dll" "%WORKSPA
 xcopy /y "%WORKSPACE%\CI-Test-Library\bin\Release\CI-Test-Library.dll" "%WORKSPACE%\UnitTestProject1\bin\Release\*"
 
 REM Compile CI-Test
-"C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc" /target:exe /out:"%WORKSPACE%\CI-Test\bin\Release\CI-Test.exe" /reference:"%WORKSPACE%\CI-Test-Library\bin\Release\CI-Test-Library.dll" "%WORKSPACE%\CI-Test\*.cs"
+REM "C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc" /target:exe /out:"%WORKSPACE%\CI-Test\bin\Release\CI-Test.exe" /reference:"%WORKSPACE%\CI-Test-Library\bin\Release\CI-Test-Library.dll" "%WORKSPACE%\CI-Test\*.cs"
+"C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe" "%WORKSPACE%\CI-Test\CI-Test.csproj"
 
 REM Compile UnitTestProject1
-"C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc" /target:library /out:"%WORKSPACE%\UnitTestProject1\bin\Release\UnitTestProject1.dll" /reference:"%WORKSPACE%\CI-Test-Library\bin\Release\CI-Test-Library.dll" /reference:"%WORKSPACE%\References\nunit.framework.dll" "%WORKSPACE%\UnitTestProject1\*.cs"
+REM "C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc" /target:library /out:"%WORKSPACE%\UnitTestProject1\bin\Release\UnitTestProject1.dll" /reference:"%WORKSPACE%\CI-Test-Library\bin\Release\CI-Test-Library.dll" /reference:"%WORKSPACE%\References\nunit.framework.dll" "%WORKSPACE%\UnitTestProject1\*.cs"
+"C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe" "%WORKSPACE%\UnitTestProject1\UnitTestProject1.csproj"
 xcopy /y "%WORKSPACE%\References\nunit.framework.dll" "%WORKSPACE%\UnitTestProject1\bin\Release\*"
